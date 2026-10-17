@@ -26,7 +26,7 @@ namespace 加压站SCADA
             cts = new CancellationTokenSource();
             this.FormClosing += Form1_FormClosing;
             
-            updateDateTimer.Interval = 1000;
+            updateDateTimer.Interval = 500;
             updateDateTimer.Enabled = true;
             updateDateTimer.Tick += UpdateDateTimer_Tick;
         }
@@ -41,6 +41,7 @@ namespace 加压站SCADA
             if (sysInfo.ScreenTime>0)
             {
                 Program.TickCount++;
+                
                 if (sysInfo.ScreenTime*1000/ updateDateTimer.Interval==Program.TickCount)
                 {
                     LockWorkStation();
@@ -246,7 +247,8 @@ namespace 加压站SCADA
             //如果检测到有鼠标或则键盘的消息，则使计数为0.....
             if (m.Msg == 0x0200 || m.Msg == 0x0201 || m.Msg == 0x0204 || m.Msg == 0x0207)
             {
-                Program.TickCount = 0;
+                MessageBox.Show("Tick" + Program.TickCount);
+
             }
             return false;
         }
