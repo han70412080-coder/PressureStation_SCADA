@@ -84,7 +84,7 @@
             this.valve_In = new xbd.ControlLib.xbdValve();
             this.xbdFlowControl1 = new xbd.ControlLib.xbdFlowControl();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.videoSourcePlayer1 = new AForge.Controls.VideoSourcePlayer();
+            this.vsp_cameraShow = new AForge.Controls.VideoSourcePlayer();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
             this.lbl_PressureOut = new System.Windows.Forms.Label();
@@ -940,20 +940,19 @@
             // 
             this.panel7.BackgroundImage = global::加压站SCADA.Properties.Resources.ParamPanel;
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel7.Controls.Add(this.videoSourcePlayer1);
+            this.panel7.Controls.Add(this.vsp_cameraShow);
             this.panel7.Location = new System.Drawing.Point(967, 437);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(273, 200);
             this.panel7.TabIndex = 9;
             // 
-            // videoSourcePlayer1
+            // vsp_cameraShow
             // 
-            this.videoSourcePlayer1.Location = new System.Drawing.Point(20, 15);
-            this.videoSourcePlayer1.Name = "videoSourcePlayer1";
-            this.videoSourcePlayer1.Size = new System.Drawing.Size(236, 170);
-            this.videoSourcePlayer1.TabIndex = 0;
-            this.videoSourcePlayer1.Text = "vsp_cameraShow";
-            this.videoSourcePlayer1.VideoSource = null;
+            this.vsp_cameraShow.Location = new System.Drawing.Point(20, 15);
+            this.vsp_cameraShow.Name = "vsp_cameraShow";
+            this.vsp_cameraShow.Size = new System.Drawing.Size(236, 170);
+            this.vsp_cameraShow.TabIndex = 0;
+            this.vsp_cameraShow.VideoSource = null;
             // 
             // panel6
             // 
@@ -1725,7 +1724,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbl_PreTankOut;
         private System.Windows.Forms.Timer timer_ScreenTime;
-        private AForge.Controls.VideoSourcePlayer videoSourcePlayer1;
+        private AForge.Controls.VideoSourcePlayer vsp_cameraShow;
         //private MeterControl meterControl1;
     }
 }

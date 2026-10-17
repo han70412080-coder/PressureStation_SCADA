@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using AForge.Video.DirectShow;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -41,9 +42,18 @@ namespace 加压站SCADA
             toggle_AutoStart.Checked = sysInfo.AutoStart;
             txt_ScreenTime.Text = sysInfo.ScreenTime.ToString();
             txt_LogoutTime.Text = sysInfo.LogoutTime.ToString();
-
             this.toggle_AutoStart.Click += toggle_AutoStart_CheckedChanged;
 
+
+            FilterInfoCollection infoCollection = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            foreach (FilterInfo item in infoCollection)
+            {
+                cmb_Camera.Items.Add(item);
+            }
+            if (cmb_Camera.SelectedIndex<infoCollection.Count)
+            {
+                cmb_Camera.SelectedIndex = sysInfo.CameraIndex;
+            }
         }
 
         public SysInfo sysInfo { get; }

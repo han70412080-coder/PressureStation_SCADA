@@ -98,11 +98,11 @@
     </Compile>
     <Compile Include="4,实体库\PlcData.cs" />
     <Compile Include="2,数据层\PlcDataService.cs" />
-    <Compile Include="CameraHelper.cs" />
-    <Compile Include="FrmValveControl.cs">
+    <Compile Include="5,工具库\CameraHelper.cs" />
+    <Compile Include="1,界面层\FrmValveControl.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmValveControl.Designer.cs">
+    <Compile Include="1,界面层\FrmValveControl.Designer.cs">
       <DependentUpon>FrmValveControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -110,8 +110,8 @@
     <Compile Include="3,通信层\S7NetLib.cs" />
     <Compile Include="4,实体库\SysInfo.cs" />
     <Compile Include="2,数据层\SysInfoService.cs" />
-    <Compile Include="RoleEnum.cs" />
-    <Compile Include="SysAdmin.cs" />
+    <Compile Include="4,实体库\RoleEnum.cs" />
+    <Compile Include="4,实体库\SysAdmin.cs" />
     <EmbeddedResource Include="1,界面层\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,7 +127,7 @@
     <EmbeddedResource Include="1,界面层\FrmParam.resx">
       <DependentUpon>FrmParam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmValveControl.resx">
+    <EmbeddedResource Include="1,界面层\FrmValveControl.resx">
       <DependentUpon>FrmValveControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

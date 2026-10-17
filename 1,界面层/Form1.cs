@@ -61,9 +61,11 @@ namespace 加压站SCADA
                         Program.CurrentAdmin = null;
                     }
                 }
-                
             }
+
+
         }
+        CameraHelper cameraHelper = null;
         PlcDataService plcDataService = new PlcDataService();
         //中间转存数据对象
         private readonly object _dataLock = new object();
@@ -87,6 +89,8 @@ namespace 加压站SCADA
                 messageFilter = new MessageFilter();
                 Application.AddMessageFilter(messageFilter);
             }
+            cameraHelper = new CameraHelper(sysInfo.CameraIndex, this.vsp_cameraShow);
+            cameraHelper.StartCamera();
         }
         #region PLCCommunication 断线重连 定时刷新
         private void PLCCommunication()
