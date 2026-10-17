@@ -47,7 +47,7 @@
             this.btn_Pump1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label40 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btn_userLogin = new System.Windows.Forms.Button();
             this.label39 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
@@ -84,6 +84,7 @@
             this.valve_In = new xbd.ControlLib.xbdValve();
             this.xbdFlowControl1 = new xbd.ControlLib.xbdFlowControl();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.videoSourcePlayer1 = new AForge.Controls.VideoSourcePlayer();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label23 = new System.Windows.Forms.Label();
             this.lbl_PressureOut = new System.Windows.Forms.Label();
@@ -137,6 +138,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -164,7 +166,7 @@
             this.panel2.Controls.Add(this.btn_Pump1);
             this.panel2.Controls.Add(this.button5);
             this.panel2.Controls.Add(this.label40);
-            this.panel2.Controls.Add(this.button6);
+            this.panel2.Controls.Add(this.btn_userLogin);
             this.panel2.Controls.Add(this.label39);
             this.panel2.Controls.Add(this.label38);
             this.panel2.Controls.Add(this.label37);
@@ -407,19 +409,19 @@
             this.label40.TabIndex = 45;
             this.label40.Text = "水箱液位";
             // 
-            // button6
+            // btn_userLogin
             // 
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.ForeColor = System.Drawing.Color.Transparent;
-            this.button6.Image = global::加压站SCADA.Properties.Resources.Border;
-            this.button6.Location = new System.Drawing.Point(831, 15);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(85, 37);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "用户登录";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btn_userLogin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btn_userLogin.FlatAppearance.BorderSize = 0;
+            this.btn_userLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_userLogin.ForeColor = System.Drawing.Color.Transparent;
+            this.btn_userLogin.Image = global::加压站SCADA.Properties.Resources.Border;
+            this.btn_userLogin.Location = new System.Drawing.Point(831, 15);
+            this.btn_userLogin.Name = "btn_userLogin";
+            this.btn_userLogin.Size = new System.Drawing.Size(85, 37);
+            this.btn_userLogin.TabIndex = 3;
+            this.btn_userLogin.Text = "用户登出";
+            this.btn_userLogin.UseVisualStyleBackColor = true;
             // 
             // label39
             // 
@@ -938,10 +940,20 @@
             // 
             this.panel7.BackgroundImage = global::加压站SCADA.Properties.Resources.ParamPanel;
             this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel7.Location = new System.Drawing.Point(967, 442);
+            this.panel7.Controls.Add(this.videoSourcePlayer1);
+            this.panel7.Location = new System.Drawing.Point(967, 437);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(273, 195);
+            this.panel7.Size = new System.Drawing.Size(273, 200);
             this.panel7.TabIndex = 9;
+            // 
+            // videoSourcePlayer1
+            // 
+            this.videoSourcePlayer1.Location = new System.Drawing.Point(20, 15);
+            this.videoSourcePlayer1.Name = "videoSourcePlayer1";
+            this.videoSourcePlayer1.Size = new System.Drawing.Size(236, 170);
+            this.videoSourcePlayer1.TabIndex = 0;
+            this.videoSourcePlayer1.Text = "vsp_cameraShow";
+            this.videoSourcePlayer1.VideoSource = null;
             // 
             // panel6
             // 
@@ -965,7 +977,7 @@
             this.panel6.Controls.Add(this.label13);
             this.panel6.Location = new System.Drawing.Point(1030, 191);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(210, 245);
+            this.panel6.Size = new System.Drawing.Size(210, 240);
             this.panel6.TabIndex = 8;
             // 
             // label23
@@ -1576,7 +1588,6 @@
             // timer_ScreenTime
             // 
             this.timer_ScreenTime.Interval = 500;
-//            this.timer_ScreenTime.Tick += new System.EventHandler(this.timer_ScreenTime_Tick);
             // 
             // Form1
             // 
@@ -1593,6 +1604,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel7.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
@@ -1692,7 +1704,7 @@
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btn_userLogin;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
@@ -1713,6 +1725,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lbl_PreTankOut;
         private System.Windows.Forms.Timer timer_ScreenTime;
+        private AForge.Controls.VideoSourcePlayer videoSourcePlayer1;
         //private MeterControl meterControl1;
     }
 }

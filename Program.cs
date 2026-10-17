@@ -21,5 +21,6 @@ namespace 加压站SCADA
             
         }
         public static int TickCount = 0;
+        public static SysAdmin CurrentAdmin;
     }
 }

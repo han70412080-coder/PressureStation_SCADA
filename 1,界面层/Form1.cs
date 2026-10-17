@@ -30,14 +30,16 @@ namespace 加压站SCADA
             updateDateTimer.Enabled = true;
             updateDateTimer.Tick += UpdateDateTimer_Tick;
         }
+
         System.Windows.Forms.Timer updateDateTimer = new System.Windows.Forms.Timer();
         private bool IsFirstScan = true;
         private readonly CultureInfo _cultureInfo = new CultureInfo("en-US");
         MessageFilter messageFilter;
+        DateTime LoginTime = DateTime.Now;
         private void UpdateDateTimer_Tick(object sender, EventArgs e)
         {
             lbl_DateShow.Text = DateTime.Now.ToString("yyyy-MM-dd HH mm ss dddd", _cultureInfo);
-
+            //自动息屏实现
             if (sysInfo.ScreenTime>0)
             {
                 Program.TickCount++;
@@ -46,6 +48,20 @@ namespace 加压站SCADA
                 {
                     LockWorkStation();
                 }
+            }
+            //自动注销实现
+            if (sysInfo.LogoutTime>0)
+            {
+                if (Program.CurrentAdmin!=null)
+                {
+                    TimeSpan loginTimeSpan = DateTime.Now - LoginTime;
+                    if (loginTimeSpan.TotalSeconds>sysInfo.LogoutTime)
+                    {
+                        this.btn_userLogin.Text = "用户登录";
+                        Program.CurrentAdmin = null;
+                    }
+                }
+                
             }
         }
         PlcDataService plcDataService = new PlcDataService();
