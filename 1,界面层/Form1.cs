@@ -247,8 +247,7 @@ namespace 加压站SCADA
             //如果检测到有鼠标或则键盘的消息，则使计数为0.....
             if (m.Msg == 0x0200 || m.Msg == 0x0201 || m.Msg == 0x0204 || m.Msg == 0x0207)
             {
-                MessageBox.Show("Tick" + Program.TickCount);
-
+                Program.TickCount = 0;
             }
             return false;
         }
