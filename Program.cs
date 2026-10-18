@@ -17,6 +17,8 @@ namespace 加压站SCADA
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            string ConneStr = "Data Source=" + Application.StartupPath + @"\DataBase\Pressurization;pooling=true;FildIfMissing=false;";
+            new SQLiteService().SetConnectStr(ConneStr);
             Application.Run(new Form1());
             
         }

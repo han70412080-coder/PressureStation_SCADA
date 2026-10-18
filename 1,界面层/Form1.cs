@@ -29,6 +29,7 @@ namespace 加压站SCADA
             updateDateTimer.Interval = 500;
             updateDateTimer.Enabled = true;
             updateDateTimer.Tick += UpdateDateTimer_Tick;
+            
         }
 
         System.Windows.Forms.Timer updateDateTimer = new System.Windows.Forms.Timer();
@@ -75,6 +76,7 @@ namespace 加压站SCADA
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             cts.Cancel();
+            cameraHelper?.StopCamera();
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -138,7 +140,7 @@ namespace 加压站SCADA
             // 2. 跨线程判断：如果当前不是UI主线程，投递任务给UI线程
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action<PlcData>(UpdateUIData), plcData);
+                this.BeginInvoke(new Action<PlcData>(UpdateUIData), plcData);
                 return; //投递后直接return，后台线程不再往下执行UI赋值
             }
             // ================= 以下全部是原来timer_Refresh_Tick的UI刷新代码 =================
@@ -229,7 +231,7 @@ namespace 加压站SCADA
         }
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
         private void btn_Pump1_Click(object sender, EventArgs e)
         {
@@ -257,6 +259,31 @@ namespace 加压站SCADA
 
         #endregion
 
+        private void btn_userLogin_Click(object sender, EventArgs e)
+        {
+            DialogResult IsLoginSucess= new FrmLogin().ShowDialog();
+            if (IsLoginSucess==DialogResult.OK)
+            {
+                lbl_CurrentUserName.Text = Program.CurrentAdmin.LoginName;
+            }
+        }
+
+        #region 无边框拖动 
+
+        private Point mPoint;
+        private void Panel_MouseDown(object sender, MouseEventArgs e)
+        {
+            mPoint = new Point(e.X, e.Y);
+        }
+
+        private void Panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Location = new Point(this.Location.X + e.X - mPoint.X, this.Location.Y + e.Y - mPoint.Y);
+            }
+        }
+        #endregion
     }
 
     #region 消息筛选器 
@@ -273,4 +300,5 @@ namespace 加压站SCADA
         }
     }
     #endregion
+
 }

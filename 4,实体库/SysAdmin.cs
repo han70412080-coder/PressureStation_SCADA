@@ -10,8 +10,8 @@ namespace 加压站SCADA
     {
         public int LoginId { get; set; }
         public string LoginName { get; set; }
-        public int LoginPwd { get; set; }
-        public RoleName roleName { get; set; }
+        public string LoginPwd { get; set; }
+        public RoleName RoleName { get; set; }
 
     }
 }
